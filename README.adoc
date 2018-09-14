@@ -1,0 +1,17 @@
+= aws-elb-cloudwatch-alarms
+
+.Example
+[source,terraform]
+----
+module "elb_alarms" {
+  source = "git::https://github.com/SevereOverfl0w/terraform-aws-elb-cloudwatch-sns-alarms.git?ref=master"
+
+  name = "myapp"
+  namespace = "api"
+  stage = "dev"
+
+  load_balancer_name = "${aws_elb.load_balancer.name}"
+  human_identifier = "Pied Piper API LB"
+  alarm_actions = ["${var.alarm_actions}"]
+}
+----
